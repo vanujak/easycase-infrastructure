@@ -4,7 +4,7 @@ provider "aws" {
 
 resource "aws_security_group" "web_sg" {
   name        = "web_sg"
-  description = "Allow SSH and HTTP inbound traffic"
+  description = "Allow SSH and app inbound traffic"
 
   ingress {
     from_port   = 22
@@ -16,6 +16,20 @@ resource "aws_security_group" "web_sg" {
   ingress {
     from_port   = 80
     to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 3000
+    to_port     = 3000
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 4000
+    to_port     = 4000
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
