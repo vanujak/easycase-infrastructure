@@ -4,7 +4,7 @@ provider "aws" {
 
 resource "aws_security_group" "web_sg" {
   name        = "web_sg"
-  description = "Allow SSH and app inbound traffic"
+  description = "Allow SSH and HTTP inbound traffic"
 
   ingress {
     from_port   = 22
